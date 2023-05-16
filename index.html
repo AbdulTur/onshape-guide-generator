@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onshape Guide Generator</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const userInput = document.getElementById('user-input');
+      const submitButton = document.getElementById('submit-button');
+      const generatedGuide = document.getElementById('generated-guide');
+
+      submitButton.addEventListener('click', async function () {
+        const userInputText = userInput.value.trim();
+
+        if (userInputText) {
+          const response = await fetch('http://161.35.28.117:8000/generate-guide', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user_input: userInputText}),
+          });
+
+          const data = await response.json();
+          generatedGuide.textContent = data.guide;
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <img src="img/box-onshape-favicon-512-401x.jpeg">
+    <h1>Onshape Guide Generator</h1>
+  </div>
+
+  <main>
+
+    <div id="about-and-htu-section">
+      <h2>About</h2>
+      <p>
+        Onshape Guide Generator is a web application that helps users create step-by-step guides for designing parts
+        using Onshape. The application takes user input in the form of text and uses GPT-3.5-turbo AI to generate a
+        detailed guide. The guide follows best Onshape practices and is based on Onshape's pre-built tools.
+      </p>
+      <h2>How to Use</h2>
+      <p>
+        To use the Onshape Guide Generator, simply type the part you wish to design in the text box below labeled
+        "<strong>What do you wish to design?</strong>". Once you have entered your desired part, click the "Generate
+        Guide" button. The application will then generate a step-by-step guide for designing your part using Onshape
+        best practices. The generated guide will be displayed below in the "Generated Guide" section.
+        Wait a few seconds for the application to generate the guide.
+      </p>
+    </div>
+
+    <div id="input-section">
+      <label for="user-input"><strong>What do you wish to design?</strong></label>
+      <input type="text" id="user-input">
+      <button id="submit-button">Generate Guide</button>
+    </div>
+
+    <div id="output-section">
+      <h2>Generated Guide:</h2>
+      <p id="generated-guide"></p>
+    </div>
+
+  </main>
+</body>
+
+</html>
