@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Light mode styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Dark mode styles */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #111827;
+  --bg-dark-color: #1f2937;
+  --text-dark-color: #f9fafb;
+}
+
+.dark :root {
+  --bg-color: var(--bg-dark-color);
+  --text-color: var(--text-dark-color);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.dark .bg-white {
+  background-color: #374151;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1f2937;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.dark .text-black {
+  color: #ffffff;
+}
+
+.bg-gray-800 {
+  background-color: #2d3748;
+}
+
+.dark .bg-gray-800 {
+  background-color: #111827;
+}
+
+.hover\:bg-gray-900:hover {
+  background-color: #1a202c;
+}
+
+.dark .hover\:bg-gray-900:hover {
+  background-color: #000000;
+}
+
+.bg-gray-600 {
+  background-color: #718096;
+}
+
+.dark .bg-gray-600 {
+  background-color: #4a5568;
+}
+
+.hover\:bg-gray-700:hover {
+  background-color: #4a5568;
+}
+
+.dark .hover\:bg-gray-700:hover {
+  background-color: #2d3748;
+}
